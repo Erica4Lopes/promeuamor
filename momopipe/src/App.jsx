@@ -1,33 +1,50 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './index.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState('')
+  const [color, setColor] = useState('')
+
+  const isFelipe = name.toLowerCase() === 'felipe'
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='p-6'>
+        <p className="mb-4 text-lg font-semibold">Qual seu nome e sua cor favorita?</p>
+        <input 
+          id='Nm'
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Digite o nome mais lindo"
+          className="border border-gray-400 rounded-md p-2 mb-4 w-full"
+        />
+        <input 
+          id='Cl'
+          type="text"
+          value={color} 
+          onChange={(e) => setColor(e.target.value)}
+          placeholder='Digite uma cor'
+          className="border border-gray-400 rounded-md p-2 mb-4 w-full"
+          />
+        {name && (  
+          isFelipe ? (
+            <div 
+              className="text-white text-5xl font-bold p-6 rounded-full border-8 inline-block" 
+              style={{ color: color || 'black'}}
+            >
+              Oii meu amor
+            </div>
+          ) : (
+          <p 
+            className="italic text-lg font-medium" 
+            style={{ color: color || 'black' }}
+          >
+            Oii {name}
+          </p>
+          )
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
