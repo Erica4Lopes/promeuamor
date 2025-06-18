@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.heart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.heart {
+  position: relative;
+  width: 150px;
+  height: 135px;
+  background-color: var(--heart-color);
+  transform: rotate(-45deg);
+  margin-top: 20px;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 135px;
+  background-color: var(--heart-color);
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -75px;
+  left: 0;
+}
+
+.heart::after {
+  left: 75px;
+  top: 0;
+}
+
+.heart-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  z-index: 1;
+  padding: 10px;
+}
